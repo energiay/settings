@@ -1,4 +1,55 @@
 
+SELECT * 
+FROM custom_web_template
+WHERE CAST(data AS NVARCHAR(max)) LIKE '%from library_material as LibraryData%'
+
+
+SELECT sas.name, sas.modification_date, sa.*
+FROM server_agent AS sa
+LEFT JOIN server_agents AS sas ON sa.id=sas.id
+WHERE CAST(data AS NVARCHAR(max)) LIKE '%6491170854400957603%'
+ORDER BY sas.modification_date
+
+
+SELECT 
+	ar.id,
+	ar.data.value('(//action_report/report_text)[1]', 'nvarchar(max)') AS report_text,
+	ar.data
+FROM action_report AS ar
+WHERE	created > '2018-09-30'
+		AND ar.data.value('(//action_report/report_text)[1]', 'nvarchar(max)') LIKE '%(Unknown source,   line 48)%'
+
+
+SELECT *
+FROM remote_action
+WHERE CAST(data AS NVARCHAR(max)) LIKE '%ActionRequestPochtaBank%'
+
+
+SELECT *
+FROM remote_collection
+WHERE CAST(data AS NVARCHAR(max)) LIKE '%SOAP Client%'
+
+
+SELECT *
+FROM notification_template
+WHERE CAST(data AS NVARCHAR(max)) LIKE '%img%'
+
+SELECT *
+FROM active_notification
+WHERE CAST(data AS NVARCHAR(max)) LIKE '%6589952435981348617%'
+
+SELECT *
+FROM notification
+WHERE CAST(data AS NVARCHAR(max)) LIKE '%Инвестиционное страхование жизни программа%'
+
+SELECT *
+FROM [notification]
+WHERE CAST(data AS NVARCHAR(max)) LIKE '%6568807292919025300%'
+
+SELECT *
+FROM notification_template
+WHERE CAST(data AS NVARCHAR(max)) LIKE '%margin:0; padding-top: 10px; font-family: Calibri, Verdana, Ariel, sans-serif%'
+
 
 -- XML exist
 SELECT acs.id
