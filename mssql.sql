@@ -765,7 +765,12 @@ DROP FUNCTION Zhora
 
 
 -- insert в переменную
-DECLARE @china_table TABLE ( id varchar(100) )
-INSERT INTO @china_table (id)
-SELECT id FROM dbo.VIEW_DIVISIONS WHERE ID = '  5N4UMCO' 
-SELECT id AS ss FROM @china_table
+DECLARE @career_reserve TABLE(
+    career_reserve_id bigint
+);
+INSERT INTO @career_reserve (
+    career_reserve_id
+)
+SELECT DISTINCT career_reserve_id
+FROM career_reserve_tutors AS crts
+WHERE crts.tutor_id=7147583355778132228 AND crts.career_reserve_id in (SELECT id FROM career_reserves AS crs WHERE crs.code in ('razum_cpk_person', 'razum_cpk_boss'))
