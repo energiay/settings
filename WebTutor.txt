@@ -1,0 +1,7 @@
+
+1. Приспоение полю "current_field" объектa XmElem примитивного значения
+    var card = OpenDoc(UrlFromDocID(1234567890))
+    var bind = card.TopElem.binds.AddChild()
+    bind.OptChild('current_field').Value = "bla bla bla"
+    
+
