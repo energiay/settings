@@ -1,3 +1,10 @@
 // слить ветку dev в prod с разрешением конфликтов в пользу dev
 git checkout prod
 git merge -Xtheirs dev
+
+
+//Удалите локальную ветвь
+git branch -d <branch_name>
+
+//Удаление удаленной ветви
+git push origin --delete <branch_name>
