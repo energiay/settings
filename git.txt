@@ -1,0 +1,3 @@
+// слить ветку dev в prod с разрешением конфликтов в пользу dev
+git checkout prod
+git merge -Xtheirs dev
