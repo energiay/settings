@@ -8,3 +8,13 @@ git branch -d <branch_name>
 
 //Удаление удаленной ветви
 git push origin --delete <branch_name>
+
+// отмена последних изменений
+git checkout -- .
+
+// отмена последних закоимиченных изменений
+git reset .
+git checkout -- .
+
+// отмена последнего комита
+git reset --hard HEAD^1
