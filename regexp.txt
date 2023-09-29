@@ -1,0 +1,2 @@
+// Обернуть Enter в тег div
+:%s/Enter/<div>&<\/div>/g
