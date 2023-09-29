@@ -2,7 +2,6 @@
 git checkout prod
 git merge -Xtheirs dev
 
-
 //Удалите локальную ветвь
 git branch -d <branch_name>
 
@@ -12,9 +11,9 @@ git push origin --delete <branch_name>
 // отмена последних изменений
 git checkout -- .
 
-// отмена последних закоимиченных изменений
+// отмена последних зафиксированных изменений
 git reset .
 git checkout -- .
 
-// отмена последнего комита
+// отмена последней фиксации
 git reset --hard HEAD^1
