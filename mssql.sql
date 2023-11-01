@@ -774,3 +774,20 @@ INSERT INTO @career_reserve (
 SELECT DISTINCT career_reserve_id
 FROM career_reserve_tutors AS crts
 WHERE crts.tutor_id=7147583355778132228 AND crts.career_reserve_id in (SELECT id FROM career_reserves AS crs WHERE crs.code in ('razum_cpk_person', 'razum_cpk_boss'))
+
+
+-- преобразование поля с json в таблицу
+WITH #codes AS (
+    SELECT t.Value AS value
+    FROM override_web_templates AS os
+    LEFT JOIN override_web_template AS o ON o.id=os.id
+    CROSS APPLY o.data.nodes('override_web_template/wvars/wvar') AS wvar(xmldata)
+    CROSS APPLY OPENJSON(wvar.xmldata.query('value').value('.', 'nvarchar(max)'), '$') AS t
+    WHERE mode='razum_cpk' AND is_enabled=1
+        AND wvar.xmldata.query('name').value('.', 'nvarchar(max)') = 'adaptation_codes'
+)
+SELECT value FROM #codes
+
+
+-- json
+SELECT value FROM OPENJSON(N'["razum_cpk_person","razum_cpk_bosss"]') AS adaptations
