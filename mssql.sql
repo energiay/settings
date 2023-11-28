@@ -575,7 +575,6 @@ CREATE VIEW view_statuses_for_pp AS
 	WHERE r.id=6808761893877526589
 
 
-
 CREATE VIEW view_selection_uis AS 
 	SELECT 
 		rs.id
@@ -601,6 +600,11 @@ CREATE VIEW view_vacancy_states AS
 
 -- Удалить представление
 DROP VIEW PP
+
+
+-- Изменить представление
+ALERT VIEW monobrand_pool_chronometry AS
+    SELECT * FROM ....
 
 
 -- объединить все записи в одну строку с разделителем запятая
