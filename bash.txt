@@ -1,0 +1,2 @@
+// рекурсивный поиск по слову
+grep -r "useLocalStorage" *
