@@ -1,21 +1,26 @@
 Нюансы работы с WT
 
 
-Присвоение полю "current_field", объектa XmElem, примитивного значения
+// Присвоение полю "current_field", объектa XmElem, примитивного значения
     var card = OpenDoc(UrlFromDocID(1234567890))
     var bind = card.TopElem.binds.AddChild()
     bind.OptChild('current_field').Value = "bla bla bla"
     
 
-Запуск агента только на сервере
+// Запуск агента только на сервере
     if ( !LdsIsServer ) {
         alert('Запуск агента предусмотрен только на стороне сервера.')
     }
 
 
-Пропустить итерацию в выгрузке
+// Пропустить итерацию в выгрузке
     continueFlag = true;
 
+
+// Полезные функции для работы с датой
+    StrDate(<date>[,<showTime>[,<showSeconds>]])    // Преобразует дату в строку
+    DateToRawSeconds(<date>)                        // unixtimestamp
+    RawSecondsToDate(<seconds>)                     // unixtimestamp
 
 
 
