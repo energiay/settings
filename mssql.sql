@@ -795,3 +795,7 @@ SELECT value FROM #codes
 
 -- json
 SELECT value FROM OPENJSON(N'["razum_cpk_person","razum_cpk_bosss"]') AS adaptations
+
+
+--версия mssql
+SELECT @@version
