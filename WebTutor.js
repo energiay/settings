@@ -25,6 +25,9 @@
 // прочитать из кастомного поля
     var test = cardPa.TopElem.custom_elems.GetOptProperty("start")
 
+// unixtimestamp
+RawSecondsToDate(seconds) // 10 -> 01.01.1970 03:00:10
+DateToRawSeconds(Date("01.01.1970 03:00:10")) 01.01.1970 03:00:10 -> 10
 
 
 
