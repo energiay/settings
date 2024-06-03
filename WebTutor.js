@@ -14,10 +14,10 @@
     continueFlag = true;
 
 // Полезные функции для работы с датой
-    StrDate(<date>[,<showTime>[,<showSeconds>]])    // Преобразует дату в строку
+    StrDate(date[,showTime[,showSeconds]])    // Преобразует дату в строку
     ParseDate(StrDate(Date(), false, false))        // текущая дата без времени
-    DateToRawSeconds(<date>)                        // unixtimestamp
-    RawSecondsToDate(<seconds>)                     // unixtimestamp
+    DateToRawSeconds(date)                        // unixtimestamp
+    RawSecondsToDate(seconds)                     // unixtimestamp
 
 // запись в кастомное поле
     cardPa.TopElem.custom_elems.ObtainChildByKey('notification').value = 'test'
