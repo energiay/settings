@@ -48,7 +48,7 @@ map <C-l> <C-W>l
 map <leader>ss :setlocal spell!<CR>
 
 " копирование текста всего буфера
-map <C-y> ggVG"+y<C-o><C-o>zz
+map <C-y> jggVG"+y<C-o><C-o>zzk
 
 "игнорировать регистр при поиске
 set ignorecase
