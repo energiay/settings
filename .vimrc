@@ -65,6 +65,8 @@ call plug#begin()
     Plug 'morhetz/gruvbox'
     Plug 'prettier/vim-prettier', { 'do': 'npm install' }
     "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --tern-completer' }
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'codota/TabNine', { 'do': 'bash ./dl_binaries.sh' }
     Plug 'easymotion/vim-easymotion'
     Plug 'mxw/vim-jsx'
     Plug 'pangloss/vim-javascript'
@@ -74,6 +76,7 @@ call plug#begin()
     Plug 'scrooloose/syntastic'
     Plug 'tpope/vim-surround'
 call plug#end()
+
 
 " включить расширенные возможности команды %
 "set nocompatible
@@ -147,3 +150,17 @@ hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=N
 hi SpellCap guisp=gray gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=gray
 hi SpellRare guisp=gray gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=gray
 hi SpellLocal guisp=gray gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=gray
+
+" TabNine
+let g:tabnine#config = {
+\ 'completion': {
+\   'enabled': v:true,
+\ },
+\ 'inline_suggestions': v:true
+\ }
+
+" Настройки для coc.nvim
+" Выбор подсказок по tab
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
