@@ -19,8 +19,8 @@ set listchars=tab:‣\ ,trail:·,precedes:«,extends:»,space:·",eol:¬
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
 autocmd BufRead,BufNewFile *.js setlocal spell
-autocmd FileType gitcommit setlocal spell
-set spell
+"autocmd FileType gitcommit setlocal spell
+"set spell
 set spell spelllang=ru_ru,en_us
 
 " backspace работает как в др.редакторах
@@ -45,7 +45,7 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-map <leader>ss :setlocal spell!<CR>
+"map <leader>ss :setlocal spell!<CR>
 
 " копирование текста всего буфера
 map <C-y> jggVG"+y<C-o><C-o>zzk
@@ -64,7 +64,7 @@ call plug#begin()
     Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'morhetz/gruvbox'
     Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-    Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --tern-completer' }
+    "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --tern-completer' }
     Plug 'easymotion/vim-easymotion'
     Plug 'mxw/vim-jsx'
     Plug 'pangloss/vim-javascript'
@@ -92,7 +92,9 @@ let g:UltiSnipsEditSplit="vertical"
 set background=light
 nnoremap <C-f> :NERDTreeFind<CR>
 
-let g:gruvbox_contrast_light="hard"
+"let g:gruvbox_contrast_light="hard"
+set termguicolors
+let g:gruvbox_guisp_fallback = "bg"
 colorscheme gruvbox
 "set background=light
 "let g:gruvbox_color_column="red"
@@ -136,4 +138,12 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_check_on_wq = 0
+
+"установить волнистое подчеркивание для слов с ошибками
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
+hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=red
+hi SpellCap guisp=gray gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=gray
+hi SpellRare guisp=gray gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=gray
+hi SpellLocal guisp=gray gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=gray
