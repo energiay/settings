@@ -34,6 +34,11 @@ DateToRawSeconds(Date("01.01.1970 03:00:10")) 01.01.1970 03:00:10 -> 10
 StrLowerCase("нет оценки")
 
 
+// получить тип открытого документа
+var card = OpenDoc(...)
+var teCard = card.TopElem
+te.Doc.Name
+
 
 
 
