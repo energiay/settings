@@ -63,20 +63,30 @@ set incsearch
 call plug#begin()
     Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'morhetz/gruvbox'
-    Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+    Plug 'prettier/vim-prettier', {
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'typescript', 'css', 'json'] }
     "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --tern-completer' }
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'codota/TabNine', { 'do': 'bash ./dl_binaries.sh' }
     Plug 'easymotion/vim-easymotion'
-    Plug 'mxw/vim-jsx'
+    Plug 'MaxMEllon/vim-jsx-pretty'
     Plug 'pangloss/vim-javascript'
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
     Plug 'VundleVim/Vundle.vim'
-    Plug 'scrooloose/syntastic'
     Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-fugitive'
+    "Plug 'dense-analysis/ale'
 call plug#end()
 
+" Включить поддержку JSX
+let g:jsx_ext_required = 0
+let g:javascript_plugin_jsx = 1
+
+" Автоматическая настройка типов файлов
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 
 " включить расширенные возможности команды %
 "set nocompatible
@@ -133,15 +143,6 @@ let g:UltiSnipsEditSplit="vertical"
 "vmap uc :norm ^x^x<CR>
 
 
-"syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_checkers_javascript= ['javascript']
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
 
 "установить волнистое подчеркивание для слов с ошибками
 let &t_Cs = "\e[4:3m"
@@ -151,7 +152,7 @@ hi SpellCap guisp=gray gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=
 hi SpellRare guisp=gray gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=gray
 hi SpellLocal guisp=gray gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=gray
 
-" TabNine
+
 let g:tabnine#config = {
 \ 'completion': {
 \   'enabled': v:true,
@@ -164,3 +165,28 @@ let g:tabnine#config = {
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
+
+let g:gitblame_enabled = 1  " Включить плагин по умолчанию
+let g:gitblame_message_template = '<author> • <date>'  " Шаблон сообщения
+
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+
+" Включение иконок и подчеркивания ошибок
+"let g:ale_sign_error = '>>'
+"let g:ale_sign_warning = '--'
+
+" Включение отображения ошибок в статусной строке
+"let g:ale_echo_cursor = 1
+
+nnoremap <silent> ]e :ALENext<CR>
+nnoremap <silent> [e :ALEPrevious<CR>
